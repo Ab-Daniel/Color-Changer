@@ -28,15 +28,15 @@ public class ColorChangerTest
 		windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		redButton = new JButton();
-		yellowButton = new JButton();
-		greenButton = new JButton();
+		redButton = new JButton("red");
+		yellowButton = new JButton("blue");
+		greenButton = new JButton("green");
 		
 		
 		controlPanel = new JPanel();
 		
 		JFrame controlFrame = new JFrame();
-		controlFrame.setSize(500, 500);
+		controlFrame.setSize(150, 150);
 		controlFrame.setTitle("Control Panel");
 		controlFrame.add(controlPanel);
 		controlPanel.add(redButton);
@@ -53,6 +53,7 @@ public class ColorChangerTest
 	
 		class RedButtonListener implements ActionListener
 		{   
+			
 			public void actionPerformed(ActionEvent event)   
 			{
 			
@@ -64,9 +65,9 @@ public class ColorChangerTest
 		
 		ActionListener redListener = new RedButtonListener();
 		redButton.addActionListener(redListener);
-	
-	}
 		
+	}
+	
 	private static JPanel windowPanel;
 	private static JPanel controlPanel;
 	
