@@ -1,15 +1,15 @@
 import java.awt.Color;
-import java.awt.Component;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.plaf.basic.BasicOptionPaneUI.ButtonActionListener;
 
-public class ColorChangerTest 
+public class ColorChangerTest extends JComponent
 {
 	
 	
@@ -18,7 +18,6 @@ public class ColorChangerTest
 	{
 		
 		
-		windowPanel = new JPanel();
 		
 		JFrame windowFrame = new JFrame();
 		windowFrame.setSize(300, 100);
@@ -33,8 +32,6 @@ public class ColorChangerTest
 		greenButton = new JButton("green");
 		
 		
-		controlPanel = new JPanel();
-		
 		JFrame controlFrame = new JFrame();
 		controlFrame.setSize(150, 150);
 		controlFrame.setTitle("Control Panel");
@@ -45,6 +42,16 @@ public class ColorChangerTest
 		controlFrame.setVisible(true);
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controlFrame.pack();
+		
+	}
+	
+
+	public void paintComponent(Graphics g)
+	{
+		
+		super.paintComponent(g);
+		Graphics2D g2 =  (Graphics2D)g;
+		
 		
 	}
 	
@@ -68,8 +75,12 @@ public class ColorChangerTest
 		
 	}
 	
-	private static JPanel windowPanel;
-	private static JPanel controlPanel;
+	final static JPanel windowPanel = new JPanel();
+	final static JPanel controlPanel = new JPanel();
+	
+	
+	//final JPanel windowPanel;
+	//private static JPanel controlPanel;
 	
 	private static JButton redButton;
 	private static JButton yellowButton;
