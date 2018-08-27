@@ -9,7 +9,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class ColorChangerTest extends JComponent
+public class ColorChangerTest
 {
 	
 	
@@ -27,7 +27,7 @@ public class ColorChangerTest extends JComponent
 		windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		
-		redButton = new JButton("red");
+		
 		yellowButton = new JButton("blue");
 		greenButton = new JButton("green");
 		
@@ -36,42 +36,35 @@ public class ColorChangerTest extends JComponent
 		controlFrame.setSize(150, 150);
 		controlFrame.setTitle("Control Panel");
 		controlFrame.add(controlPanel);
-		controlPanel.add(redButton);
-		controlPanel.add(yellowButton);
-		controlPanel.add(greenButton);
+		controlPanel.add(makeButton("red", Color.red));
+		controlPanel.add(makeButton("yellow", Color.yellow));
+		controlPanel.add(makeButton("green", Color.green));
 		controlFrame.setVisible(true);
 		controlFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		controlFrame.pack();
 		
 	}
 	
-
-	public void paintComponent(Graphics g)
+	public static JButton makeButton(String label, final Color color)
 	{
 		
-		super.paintComponent(g);
-		Graphics2D g2 =  (Graphics2D)g;
-		
-		
-	}
+		JButton button = new JButton(label);
 	
-	public ColorChangerTest()
-	{
-	
-		class RedButtonListener implements ActionListener
+		class ButtonListener implements ActionListener
 		{   
 			
 			public void actionPerformed(ActionEvent event)   
 			{
 			
-				windowPanel.setBackground(Color.red);   
+				windowPanel.setBackground(color);   
 			
 			}
 		
 		}
 		
-		ActionListener redListener = new RedButtonListener();
-		redButton.addActionListener(redListener);
+		ActionListener redListener = new ButtonListener();
+		button.addActionListener(redListener);
+		return button;
 		
 	}
 	
